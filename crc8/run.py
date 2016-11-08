@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from crc8.crc8 import CRC8
 import sys
 
