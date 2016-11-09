@@ -20,7 +20,7 @@ class CRC8(object):
 
     def check_sum(self):
         for byte in self.msg:
-            self.check = self.add_CRC(byte, self.check)
+            self.check = self.add_crc(byte, self.check)
 
     def get_sum(self):
         if self.check == 0:
