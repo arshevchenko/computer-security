@@ -8,7 +8,7 @@ class CRC8(object):
         with open(file_name, "rb") as file_cont:
             self.msg = bytearray(str(file_cont.read()).encode("hex"))
 
-    def add_CRC(self, byte, crc):
+    def add_crc(self, byte, crc):
         sec_byte = byte + 256 if byte < 0 else byte
         for i in xrange(8):
             odd = ((sec_byte ^ crc) & 1) == 1
@@ -18,11 +18,11 @@ class CRC8(object):
                 crc ^= 0x8C
         return crc
 
-    def checkSum(self):
+    def check_sum(self):
         for byte in self.msg:
             self.check = self.add_CRC(byte, self.check)
 
-    def getSum(self):
+    def get_sum(self):
         if self.check == 0:
-            self.checkSum()
+            self.check_sum()
         return self.check
