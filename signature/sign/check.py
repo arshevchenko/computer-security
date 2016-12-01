@@ -2,7 +2,7 @@
 import os
 import hashlib
 
-class CheckSign:
+class CheckSign(object):
 
     def __init__(self):
         while True:
@@ -22,10 +22,9 @@ class CheckSign:
         return ("/Users/" + os.getlogin() + "/" + f[2:] if f[:2] == "~/" else f)
 
     def get_signature(self, path):
-        selected_file = open(path, 'rb')
-        selected_file.read(selected_file.__sizeof__()/2)
+        selected_file = open(path, 'rb')        
 
-        return hashlib.md5(selected_file.read(10)).hexdigest()
+        return selected_file.read(32)
 
     def check_directory(self):
             while True:
