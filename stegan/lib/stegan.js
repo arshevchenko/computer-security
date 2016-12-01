@@ -5,18 +5,15 @@ module.exports = function Steganography(){
    this.hide = function(text){
      for(var i = 0; i < text.length - 1; i++){
       var element = this.bitArray.parse(text[i].charCodeAt(0)).reverse();
-      if(element.length < 11){
-         while(element.length < 11){
-           element.push(0);
-         }
-       }
-       this.bit_text = this.bit_text.concat(element.reverse());
+      while(element.length < 11)
+          element.push(0);
+      this.bit_text = this.bit_text.concat(element.reverse());
      }
    };
 
    this.encode = function(text){
-     var text_container = text.split(" ");
-     var result_container = "";
+     var text_container = text.split(" "),
+         result_container = "";
      if(text_container.length - 1 < this.bit_text.length){
        console.log("Данный текст не может быть использовать в качестве контейнера.");
      }else{
@@ -33,8 +30,8 @@ module.exports = function Steganography(){
    }
 
    this.decode = function(text){
-     var char_decode = [];
-     var message = "";
+     var char_decode = [],
+         message = "";
 
      for(var i = 0; i < text.length; i++){
        if(text[i] == " " && text[i + 1] == " "){
@@ -49,6 +46,7 @@ module.exports = function Steganography(){
          char_decode = [];
        }
      }
+
      return message;
    }
 }
