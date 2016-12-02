@@ -1,6 +1,6 @@
 'use strict'
 const fs = require("fs");
-var XORCipher = require("./libs/xor");
+var XORCipher = require("./libs/xorcipher");
 
 var data = fs.readFileSync(process.argv[2])
              .toString()
